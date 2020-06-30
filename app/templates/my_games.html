@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+My Games
+{% endblock %}
+
+{% block content %}
+
+<div class= container container-fluid>
+	<div class="container">
+	<h3> My Games </h3>
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th align="left">Game Date</th>
+					<th align="left">Game Time</th>
+					<th align="left">Number of Player</th>
+					<th align="left">Current Players</th>
+					<th align="left">Skill Level</th>
+					<th align="left">Created By</th>
+					<th align="left">Court</th>
+					<th align="left">Don't want it?</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% if has_games %}
+				{% for c in game_info %}
+				<tr>
+					<td> {{c.game_date}}</td>
+					<td> {{c.game_time}} </td>
+					<td> {{c.max_players}} </td>
+					<td> {{c.current_players}} </td>
+					<td> {{c.skill_level}} </td>
+					<td> {{c.username}} </td>
+					<td>  <a href={{c.link}}> {{c.court_name}} </a> </td>
+					<td>
+						<form method="POST" action ='/left'>
+						<input name='game_id' type = "hidden" value = "{{c.game_id}}">
+						<input name='players' type = "hidden" value = "{{c.players}}">
+						<input name='current_players' type = "hidden" value = "{{c.current_players}}">
+						<input name ='username' type = "hidden" value = "{{c.username}}">
+						<center><input type = 'submit' value = 'Leave'></center>
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+			{% endif %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% if has_games==False %}
+	<div class="container">
+		<p>User has no scheduled Games!</p>
+	</div>
+{% endif %}
+{% endblock %}

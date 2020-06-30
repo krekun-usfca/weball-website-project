@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Find Court
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+
+{% endblock styles %}
+
+{% block content %}
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <div class="card">
+        <img class="card-img" src= "{{ url_for('static', filename='court1.jpg') }}">
+        <div class="card-img-overlay">
+            <div class="container" style="width:100%">
+                <h1 class="card-title text-white">Search Nearby Courts</h1></br>
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <text class="card-title text-white text-large">Address</text>    {{ form.location }}
+                        {{ form.city.label(class="card-title text-white text-large") }}    {{ form.city }}
+                        {{ form.submit(class="btn btn-dark") }}
+                        <span class="focus-input100"></span>
+                    </form>
+                <div id="left" style="float:left; display:block; width:65%">
+                    <div class = "card-body bg-white" style="width:103%;opacity:0.9">
+                        <head>{{ map.js }}</head>
+                        <body>{{ map.html }}</body>
+                    </div>
+                </div>
+
+                {% if show_table %}
+
+                <div id="right" style="float:right; display:block; width:30%">
+                    <div class = "card-body bg-white" style=" opacity:0.9">
+                    <h2 class="card-title text-black">Closest Courts</h2>
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th align="left">Court</th>
+                                <th align="left">Distance (miles)</th>
+                                <th align="left">Driving Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for c in court_objects %}
+                            <tr>
+                                <td> <a href="{{ url_for("scheduled_games", court_name = c.court_name) }}" style="color:white"> {{c.court_name}} </a> </td>
+                                <td> {{c.distance}} </td>
+                                <td> {{c.duration}} </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                     </table>
+                    </div>
+                </div>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

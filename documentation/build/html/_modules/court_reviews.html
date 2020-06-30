@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>court_reviews &#8212; WeBall 0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for court_reviews</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Mon Mar 30 18:05:15 2020</span>
+
+<span class="sd">@author: srikarmurali</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;-OpfKVtyZujAAjn7oCwGKaVwsXuo0Nr5uwDInNIVQK5NYr74uqvbbVO7eIOfDr9bUMuuHKpRQtDEoqKfOqNyNPh4R-6eSDDaxWpdqzox5FWp4IUBCaRYsL-wsVaGXnYx&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">api_key</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="get_court_reviews"><a class="viewcode-back" href="../Code.html#court_reviews.get_court_reviews">[docs]</a><span class="k">def</span> <span class="nf">get_court_reviews</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Retrieve basketball court reviews.&quot;&quot;&quot;</span>
+    <span class="n">court_information</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="s2">&quot;court_information.csv&quot;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.yelp.com/v3/businesses/</span><span class="si">{0}</span><span class="s2">/reviews&quot;</span>
+    <span class="n">court_reviews</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">court_information</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">url_id</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;court_id&quot;</span><span class="p">])</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_id</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+        <span class="n">parsed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;reviews&quot;</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">court_review</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">review</span> <span class="ow">in</span> <span class="n">parsed</span><span class="p">[</span><span class="s1">&#39;reviews&#39;</span><span class="p">]:</span>
+                <span class="n">court_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;court_id&#39;</span><span class="p">]</span>
+                <span class="n">review_id</span> <span class="o">=</span> <span class="n">review</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+                <span class="n">review_text</span> <span class="o">=</span> <span class="n">review</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+                <span class="n">rating</span> <span class="o">=</span> <span class="n">review</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span>
+                <span class="n">user_id</span> <span class="o">=</span> <span class="n">review</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+                <span class="n">user_name</span> <span class="o">=</span> <span class="n">review</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+                <span class="n">time</span> <span class="o">=</span> <span class="n">review</span><span class="p">[</span><span class="s1">&#39;time_created&#39;</span><span class="p">]</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+                <span class="n">day</span> <span class="o">=</span> <span class="n">date</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+                <span class="n">month</span> <span class="o">=</span> <span class="n">date</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+                <span class="n">year</span> <span class="o">=</span> <span class="n">date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+                <span class="n">court_review</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">court_id</span><span class="p">,</span> <span class="n">review_id</span><span class="p">,</span> <span class="n">review_text</span><span class="p">,</span> <span class="n">rating</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">user_name</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="p">])</span>
+            <span class="n">court_reviews</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">court_review</span><span class="p">)</span>
+    <span class="n">court_reviews</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">court_reviews</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">court_reviews</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">court_reviews</span> <span class="o">=</span> <span class="n">get_court_reviews</span><span class="p">()</span>
+    <span class="n">court_reviews</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">court_reviews</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;court_id&#39;</span><span class="p">,</span> <span class="s1">&#39;review_id&#39;</span><span class="p">,</span> <span class="s1">&#39;review_text&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;user_name&#39;</span><span class="p">,</span>
+                                                         <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+
+    <span class="n">court_reviews</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;court_reviews.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">WeBall</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WeBall Code Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Requirements.html">Environment Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code.html">Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Haree Srinivasan, Max Calehuff, Meng Lin, Jesse Moore, Srikar Murali, Xiao Rao, Qingyi Sun, Xintao(Todd) Zhang, Kyrill Rekun.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+My Profile
+{% endblock %}
+
+{% block styles %}
+ {{ super() }}
+{% endblock styles %}
+{% block content %}
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <div class="wrapper" style="background-image: url('static/future1.jpg');">
+        <div class="inner" style="opacity:0.9">
+            <div class="image-holder" style="padding-top:45px">
+                <img src="static/user.png" alt="">
+            </div>
+            <form method="POST" id="update_profile_form" onsubmit="ga('send', 'event', 'Update Profile', 'submit');">
+                <table>
+                    <thead>
+                        <tr>
+                             <h3>{{ current_user.username }}</h3>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{ form.hidden_tag() }}
+                        <tr>
+                            <td>{{ form.age.label }}</td>
+                            <td>{{ form.age() }}<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i></td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.gender.label }}</td>
+                            <td>{{ form.gender() }} <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i></td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.skill.label }}</td>
+                            <td>{{ form.skill() }} <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i></td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.address.label }}</td>
+                            <td>{{ form.address() }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.city.label }}</td>
+                            <td>{{ form.city() }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.state.label }}</td>
+                            <td>{{ form.state() }} <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i></td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.zipcode.label }}</td>
+                            <td>{{ form.zipcode() }}</td>
+                        </tr>
+                        <tr>
+                            <td>Height:</td>
+                            <td>{{ form.feet() }} {{ form.feet.label }} {{ form.inches() }} {{ form.inches.label }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.court_type.label }}</td>
+                            <td>{{ form.court_type() }}<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </br>
+                <button type="submit">Update Profile <i class="zmdi zmdi-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+

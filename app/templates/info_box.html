@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block html %}
+
+<table >
+    <thead>
+        <tr>
+            <th>{{ court_object.court_name }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ court_object.distance }} mile(s) from you</td>
+        </tr>
+        <tr>
+            <td>{{ court_object.duration }} away</td>
+        </tr>
+        <tr>
+            <td>Rating: {{ court_object.rating }}</td>
+        </tr>
+        <tr>
+            <td>Number of Reviews: {{ court_object.num_reviews }}</td>
+        </tr>
+        <tr>
+            <td>Indoor/Outdoor: {{ court_object.indoor_outdoor }}</td>
+        </tr>
+        <tr>
+            <td><a href={{ court_object.link }}> View on Google Maps</a></td>
+        </tr>
+        <tr>
+            <td><a href={{ url_for("scheduled_games", court_name = court_object.court_name) }}> Check the games scheduled for this court here!</a></td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock html %}

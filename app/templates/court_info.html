@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Court Information
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th align="left">court_name</th>
+                <th align="left">rating</th>
+                <th align="left">review_count</th>
+                <th align="left">address</th>
+                <th align="left">city</th>
+                <th align="left">zip_code</th>
+                <th align="left">state</th>
+                <th align="left">display_address</th>
+                <th align="left">indoor_outdoor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ court_name }} </td>
+                <td>{{ rating }} </td>
+                <td>{{ review_count }}</td>
+                <td>{{ address }} </td>
+                <td>{{ city }} </td>
+                <td>{{ zip_code }} </td>
+                <td>{{ state }} </td>
+                <td>{{ display_address }} </td>
+                <td>{{ indoor_outdoor }} </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

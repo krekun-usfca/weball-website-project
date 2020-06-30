@@ -1,0 +1,55 @@
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form method="POST" action='/login' name="login_form">
+          <h3>Login</h3>
+          {{ login_form.hidden_tag() }}
+          {{ wtf.form_field(login_form.username, placeholder="Username") }}
+            {% for error in login_form.username.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          {{ wtf.form_field(login_form.password, placeholder="Password") }}
+            {% for error in login_form.password.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          <center> {{ wtf.form_field(login_form.submit)}} </center>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="registerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form method="POST" action='/register' name="registration_form">
+          <h3>Register</h3>
+          {{ registration_form.hidden_tag() }}
+          {{ wtf.form_field(registration_form.username, placeholder="Username") }}
+            {% for error in registration_form.username.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          {{ wtf.form_field(registration_form.email, placeholder="Email") }}
+            {% for error in registration_form.email.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          {{ wtf.form_field(registration_form.password, placeholder="Password") }}
+            {% for error in registration_form.password.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          {{ wtf.form_field(registration_form.confirm_password, placeholder="Confirm Password") }}
+            {% for error in registration_form.confirm_password.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          {{ wtf.form_field(registration_form.over_18) }}
+            {% for error in registration_form.over_18.errors %}
+              <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+          <center> {{ wtf.form_field(registration_form.submit)}} </center>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

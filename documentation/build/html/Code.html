@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Code &#8212; WeBall 0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Environment Requirements" href="Requirements.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-classes">
+<span id="code"></span><h1>Code<a class="headerlink" href="#module-classes" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="classes.Court">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">Court</code><span class="sig-paren">(</span><em class="sig-param">court_name</em>, <em class="sig-param">distance</em>, <em class="sig-param">duration</em>, <em class="sig-param">rating</em>, <em class="sig-param">num_reviews</em>, <em class="sig-param">indoor_outdoor</em>, <em class="sig-param">lat</em>, <em class="sig-param">long</em>, <em class="sig-param">link</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Court"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.Court" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="classes.CourtAvailabilityHours">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">CourtAvailabilityHours</code><span class="sig-paren">(</span><em class="sig-param">court_name</em>, <em class="sig-param">day_of_week</em>, <em class="sig-param">time12_hr</em>, <em class="sig-param">availability_value</em>, <em class="sig-param">availability_description</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#CourtAvailabilityHours"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.CourtAvailabilityHours" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.CourtAvailabilityHours.availability_description">
+<code class="sig-name descname">availability_description</code><a class="headerlink" href="#classes.CourtAvailabilityHours.availability_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtAvailabilityHours.availability_value">
+<code class="sig-name descname">availability_value</code><a class="headerlink" href="#classes.CourtAvailabilityHours.availability_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtAvailabilityHours.court_name">
+<code class="sig-name descname">court_name</code><a class="headerlink" href="#classes.CourtAvailabilityHours.court_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtAvailabilityHours.day_of_week">
+<code class="sig-name descname">day_of_week</code><a class="headerlink" href="#classes.CourtAvailabilityHours.day_of_week" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtAvailabilityHours.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#classes.CourtAvailabilityHours.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtAvailabilityHours.time_12hr">
+<code class="sig-name descname">time_12hr</code><a class="headerlink" href="#classes.CourtAvailabilityHours.time_12hr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.CourtInformation">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">CourtInformation</code><span class="sig-paren">(</span><em class="sig-param">court_id</em>, <em class="sig-param">court_name</em>, <em class="sig-param">rating</em>, <em class="sig-param">review_count</em>, <em class="sig-param">latitude</em>, <em class="sig-param">longitude</em>, <em class="sig-param">address</em>, <em class="sig-param">city</em>, <em class="sig-param">zip_code</em>, <em class="sig-param">country</em>, <em class="sig-param">state</em>, <em class="sig-param">display_address</em>, <em class="sig-param">indoor_outdoor</em>, <em class="sig-param">has_lights</em>, <em class="sig-param">private_public</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#CourtInformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.CourtInformation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.CourtInformation.address">
+<code class="sig-name descname">address</code><a class="headerlink" href="#classes.CourtInformation.address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.city">
+<code class="sig-name descname">city</code><a class="headerlink" href="#classes.CourtInformation.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.country">
+<code class="sig-name descname">country</code><a class="headerlink" href="#classes.CourtInformation.country" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.court_id">
+<code class="sig-name descname">court_id</code><a class="headerlink" href="#classes.CourtInformation.court_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.court_name">
+<code class="sig-name descname">court_name</code><a class="headerlink" href="#classes.CourtInformation.court_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.display_address">
+<code class="sig-name descname">display_address</code><a class="headerlink" href="#classes.CourtInformation.display_address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.has_lights">
+<code class="sig-name descname">has_lights</code><a class="headerlink" href="#classes.CourtInformation.has_lights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#classes.CourtInformation.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.indoor_outdoor">
+<code class="sig-name descname">indoor_outdoor</code><a class="headerlink" href="#classes.CourtInformation.indoor_outdoor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.latitude">
+<code class="sig-name descname">latitude</code><a class="headerlink" href="#classes.CourtInformation.latitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.longitude">
+<code class="sig-name descname">longitude</code><a class="headerlink" href="#classes.CourtInformation.longitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.private_public">
+<code class="sig-name descname">private_public</code><a class="headerlink" href="#classes.CourtInformation.private_public" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.rating">
+<code class="sig-name descname">rating</code><a class="headerlink" href="#classes.CourtInformation.rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.review_count">
+<code class="sig-name descname">review_count</code><a class="headerlink" href="#classes.CourtInformation.review_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.state">
+<code class="sig-name descname">state</code><a class="headerlink" href="#classes.CourtInformation.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtInformation.zip_code">
+<code class="sig-name descname">zip_code</code><a class="headerlink" href="#classes.CourtInformation.zip_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.CourtLocator">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">CourtLocator</code><a class="reference internal" href="_modules/classes.html#CourtLocator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.CourtLocator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="classes.CourtTimings">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">CourtTimings</code><span class="sig-paren">(</span><em class="sig-param">court_name</em>, <em class="sig-param">day_of_week</em>, <em class="sig-param">hours</em>, <em class="sig-param">open</em>, <em class="sig-param">close</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#CourtTimings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.CourtTimings" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.CourtTimings.close">
+<code class="sig-name descname">close</code><a class="headerlink" href="#classes.CourtTimings.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtTimings.court_name">
+<code class="sig-name descname">court_name</code><a class="headerlink" href="#classes.CourtTimings.court_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtTimings.day_of_week">
+<code class="sig-name descname">day_of_week</code><a class="headerlink" href="#classes.CourtTimings.day_of_week" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtTimings.hours">
+<code class="sig-name descname">hours</code><a class="headerlink" href="#classes.CourtTimings.hours" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtTimings.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#classes.CourtTimings.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CourtTimings.open">
+<code class="sig-name descname">open</code><a class="headerlink" href="#classes.CourtTimings.open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.CreateGamesForm">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">CreateGamesForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#CreateGamesForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.CreateGamesForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.CreateGamesForm.game_date">
+<code class="sig-name descname">game_date</code><em class="property"> = &lt;UnboundField(DateField, (), {'label': 'Select a date', 'format': '%Y-%m-%d', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.CreateGamesForm.game_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.game_time">
+<code class="sig-name descname">game_time</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Select a time', 'validators': [&lt;wtforms.validators.DataRequired object&gt;], 'choices': [('7 AM', '7 AM'), ('8 AM', '8 AM'), ('9 AM', '9 AM'), ('10 AM', '10 AM'), ('11 AM', '11 AM'), ('12 PM', '12 PM'), ('1 PM', '1 PM'), ('2 PM', '2 PM'), ('3 PM', '3 PM'), ('4 PM', '4 PM'), ('5 PM', '5 PM'), ('6 PM', '6 PM'), ('7 PM', '7 PM'), ('8 PM', '8 PM')]})&gt;</em><a class="headerlink" href="#classes.CreateGamesForm.game_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.max_players">
+<code class="sig-name descname">max_players</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Select the number of players', 'validators': [&lt;wtforms.validators.DataRequired object&gt;], 'coerce': &lt;class 'str'&gt;, 'choices': [('2', '2'), ('4', '4'), ('6', '6'), ('8', '8'), ('10', '10')]})&gt;</em><a class="headerlink" href="#classes.CreateGamesForm.max_players" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.max_players_choices">
+<code class="sig-name descname">max_players_choices</code><em class="property"> = [2, 4, 6, 8, 10]</em><a class="headerlink" href="#classes.CreateGamesForm.max_players_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.skill_level">
+<code class="sig-name descname">skill_level</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Enter a skill level', 'validators': [&lt;wtforms.validators.DataRequired object&gt;], 'choices': [('beginner', 'beginner'), ('intermediate', 'intermediate'), ('advanced', 'advanced')]})&gt;</em><a class="headerlink" href="#classes.CreateGamesForm.skill_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.skill_level_choices">
+<code class="sig-name descname">skill_level_choices</code><em class="property"> = ['beginner', 'intermediate', 'advanced']</em><a class="headerlink" href="#classes.CreateGamesForm.skill_level_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#classes.CreateGamesForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.CreateGamesForm.time_choices">
+<code class="sig-name descname">time_choices</code><em class="property"> = ['7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM', '7 PM', '8 PM']</em><a class="headerlink" href="#classes.CreateGamesForm.time_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.FindCourt">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">FindCourt</code><span class="sig-paren">(</span><em class="sig-param">location</em>, <em class="sig-param">city</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#FindCourt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.FindCourt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="classes.FindCourt.find_courts">
+<code class="sig-name descname">find_courts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#FindCourt.find_courts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.FindCourt.find_courts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.FindCourtForm">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">FindCourtForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#FindCourtForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.FindCourtForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.FindCourtForm.cities">
+<code class="sig-name descname">cities</code><em class="property"> = ['Emeryville', 'Oakland', 'El Cerrito', 'Alameda', 'Kensington', 'Berkeley', 'Albany', 'San Francisco', 'Sausalito', 'Millbrae', 'Mill Valley', 'South San Francisco', 'San Bruno', 'Daly City', 'Brisbane', 'Pacifica']</em><a class="headerlink" href="#classes.FindCourtForm.cities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindCourtForm.city">
+<code class="sig-name descname">city</code><em class="property"> = &lt;UnboundField(SelectField, ('City',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;], 'choices': [('Emeryville', 'Emeryville'), ('Oakland', 'Oakland'), ('El Cerrito', 'El Cerrito'), ('Alameda', 'Alameda'), ('Kensington', 'Kensington'), ('Berkeley', 'Berkeley'), ('Albany', 'Albany'), ('San Francisco', 'San Francisco'), ('Sausalito', 'Sausalito'), ('Millbrae', 'Millbrae'), ('Mill Valley', 'Mill Valley'), ('South San Francisco', 'South San Francisco'), ('San Bruno', 'San Bruno'), ('Daly City', 'Daly City'), ('Brisbane', 'Brisbane'), ('Pacifica', 'Pacifica')]})&gt;</em><a class="headerlink" href="#classes.FindCourtForm.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindCourtForm.city_choices">
+<code class="sig-name descname">city_choices</code><em class="property"> = [('Emeryville', 'Emeryville'), ('Oakland', 'Oakland'), ('El Cerrito', 'El Cerrito'), ('Alameda', 'Alameda'), ('Kensington', 'Kensington'), ('Berkeley', 'Berkeley'), ('Albany', 'Albany'), ('San Francisco', 'San Francisco'), ('Sausalito', 'Sausalito'), ('Millbrae', 'Millbrae'), ('Mill Valley', 'Mill Valley'), ('South San Francisco', 'South San Francisco'), ('San Bruno', 'San Bruno'), ('Daly City', 'Daly City'), ('Brisbane', 'Brisbane'), ('Pacifica', 'Pacifica')]</em><a class="headerlink" href="#classes.FindCourtForm.city_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindCourtForm.location">
+<code class="sig-name descname">location</code><em class="property"> = &lt;UnboundField(StringField, ('Location',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.FindCourtForm.location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindCourtForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#classes.FindCourtForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.FindGame">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">FindGame</code><span class="sig-paren">(</span><em class="sig-param">location</em>, <em class="sig-param">city</em>, <em class="sig-param">game_date</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#FindGame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.FindGame" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="classes.FindGame.calc_distances">
+<code class="sig-name descname">calc_distances</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#FindGame.calc_distances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.FindGame.calc_distances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.FindGamesForm">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">FindGamesForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#FindGamesForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.FindGamesForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.FindGamesForm.cities">
+<code class="sig-name descname">cities</code><em class="property"> = ['Emeryville', 'Oakland', 'El Cerrito', 'Alameda', 'Kensington', 'Berkeley', 'Albany', 'San Francisco', 'Sausalito', 'Millbrae', 'Mill Valley', 'South San Francisco', 'San Bruno', 'Daly City', 'Brisbane', 'Pacifica']</em><a class="headerlink" href="#classes.FindGamesForm.cities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindGamesForm.city">
+<code class="sig-name descname">city</code><em class="property"> = &lt;UnboundField(SelectField, ('City',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;], 'choices': [('Emeryville', 'Emeryville'), ('Oakland', 'Oakland'), ('El Cerrito', 'El Cerrito'), ('Alameda', 'Alameda'), ('Kensington', 'Kensington'), ('Berkeley', 'Berkeley'), ('Albany', 'Albany'), ('San Francisco', 'San Francisco'), ('Sausalito', 'Sausalito'), ('Millbrae', 'Millbrae'), ('Mill Valley', 'Mill Valley'), ('South San Francisco', 'South San Francisco'), ('San Bruno', 'San Bruno'), ('Daly City', 'Daly City'), ('Brisbane', 'Brisbane'), ('Pacifica', 'Pacifica')]})&gt;</em><a class="headerlink" href="#classes.FindGamesForm.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindGamesForm.city_choices">
+<code class="sig-name descname">city_choices</code><em class="property"> = [('Emeryville', 'Emeryville'), ('Oakland', 'Oakland'), ('El Cerrito', 'El Cerrito'), ('Alameda', 'Alameda'), ('Kensington', 'Kensington'), ('Berkeley', 'Berkeley'), ('Albany', 'Albany'), ('San Francisco', 'San Francisco'), ('Sausalito', 'Sausalito'), ('Millbrae', 'Millbrae'), ('Mill Valley', 'Mill Valley'), ('South San Francisco', 'South San Francisco'), ('San Bruno', 'San Bruno'), ('Daly City', 'Daly City'), ('Brisbane', 'Brisbane'), ('Pacifica', 'Pacifica')]</em><a class="headerlink" href="#classes.FindGamesForm.city_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindGamesForm.game_date">
+<code class="sig-name descname">game_date</code><em class="property"> = &lt;UnboundField(DateField, (), {'label': 'Select a date', 'format': '%Y-%m-%d', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.FindGamesForm.game_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindGamesForm.location">
+<code class="sig-name descname">location</code><em class="property"> = &lt;UnboundField(StringField, (), {'label': 'Enter your location', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.FindGamesForm.location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.FindGamesForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#classes.FindGamesForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.LogInForm">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">LogInForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#LogInForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.LogInForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.LogInForm.password">
+<code class="sig-name descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, (), {'label': 'Password:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.LogInForm.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.LogInForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Login',), {})&gt;</em><a class="headerlink" href="#classes.LogInForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.LogInForm.username">
+<code class="sig-name descname">username</code><em class="property"> = &lt;UnboundField(StringField, (), {'label': 'Username:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.LogInForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="classes.LogInForm.validate_password">
+<code class="sig-name descname">validate_password</code><span class="sig-paren">(</span><em class="sig-param">password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#LogInForm.validate_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.LogInForm.validate_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="classes.LogInForm.validate_username">
+<code class="sig-name descname">validate_username</code><span class="sig-paren">(</span><em class="sig-param">username</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#LogInForm.validate_username"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.LogInForm.validate_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.Match">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">Match</code><span class="sig-paren">(</span><em class="sig-param">court_name</em>, <em class="sig-param">link</em>, <em class="sig-param">game_date</em>, <em class="sig-param">game_time</em>, <em class="sig-param">max_players</em>, <em class="sig-param">skill_level</em>, <em class="sig-param">current_players</em>, <em class="sig-param">distance</em>, <em class="sig-param">game_id</em>, <em class="sig-param">username</em>, <em class="sig-param">players</em>, <em class="sig-param">create_or_join</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Match"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.Match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="classes.Preference">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">Preference</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">age</em>, <em class="sig-param">gender</em>, <em class="sig-param">skill</em>, <em class="sig-param">feet</em>, <em class="sig-param">inches</em>, <em class="sig-param">height</em>, <em class="sig-param">address</em>, <em class="sig-param">city</em>, <em class="sig-param">state</em>, <em class="sig-param">zipcode</em>, <em class="sig-param">court_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Preference"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.Preference" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.Preference.address">
+<code class="sig-name descname">address</code><a class="headerlink" href="#classes.Preference.address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.age">
+<code class="sig-name descname">age</code><a class="headerlink" href="#classes.Preference.age" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.city">
+<code class="sig-name descname">city</code><a class="headerlink" href="#classes.Preference.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.court_type">
+<code class="sig-name descname">court_type</code><a class="headerlink" href="#classes.Preference.court_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.feet">
+<code class="sig-name descname">feet</code><a class="headerlink" href="#classes.Preference.feet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.gender">
+<code class="sig-name descname">gender</code><a class="headerlink" href="#classes.Preference.gender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#classes.Preference.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#classes.Preference.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.inches">
+<code class="sig-name descname">inches</code><a class="headerlink" href="#classes.Preference.inches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.skill">
+<code class="sig-name descname">skill</code><a class="headerlink" href="#classes.Preference.skill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.state">
+<code class="sig-name descname">state</code><a class="headerlink" href="#classes.Preference.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#classes.Preference.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.Preference.zipcode">
+<code class="sig-name descname">zipcode</code><a class="headerlink" href="#classes.Preference.zipcode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.RegistrationForm">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">RegistrationForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#RegistrationForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.RegistrationForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.RegistrationForm.confirm_password">
+<code class="sig-name descname">confirm_password</code><em class="property"> = &lt;UnboundField(PasswordField, (), {'label': 'Confirm Password:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.EqualTo object&gt;]})&gt;</em><a class="headerlink" href="#classes.RegistrationForm.confirm_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.RegistrationForm.email">
+<code class="sig-name descname">email</code><em class="property"> = &lt;UnboundField(StringField, (), {'label': 'Email:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.RegistrationForm.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.RegistrationForm.over_18">
+<code class="sig-name descname">over_18</code><em class="property"> = &lt;UnboundField(BooleanField, (), {'label': 'I verify that I am over the age of 18', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.RegistrationForm.over_18" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.RegistrationForm.password">
+<code class="sig-name descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, (), {'label': 'Password:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.RegistrationForm.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.RegistrationForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Register',), {})&gt;</em><a class="headerlink" href="#classes.RegistrationForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.RegistrationForm.username">
+<code class="sig-name descname">username</code><em class="property"> = &lt;UnboundField(StringField, (), {'label': 'Username:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.RegistrationForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="classes.RegistrationForm.validate_email">
+<code class="sig-name descname">validate_email</code><span class="sig-paren">(</span><em class="sig-param">email</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#RegistrationForm.validate_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.RegistrationForm.validate_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="classes.RegistrationForm.validate_username">
+<code class="sig-name descname">validate_username</code><span class="sig-paren">(</span><em class="sig-param">username</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#RegistrationForm.validate_username"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.RegistrationForm.validate_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.ScheduledGames">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">ScheduledGames</code><span class="sig-paren">(</span><em class="sig-param">game_id</em>, <em class="sig-param">username</em>, <em class="sig-param">game_date</em>, <em class="sig-param">game_time</em>, <em class="sig-param">skill_level</em>, <em class="sig-param">max_players</em>, <em class="sig-param">current_players</em>, <em class="sig-param">court_name</em>, <em class="sig-param">players</em>, <em class="sig-param">create_or_join</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#ScheduledGames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.ScheduledGames" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.ScheduledGames.court_name">
+<code class="sig-name descname">court_name</code><a class="headerlink" href="#classes.ScheduledGames.court_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.create_or_join">
+<code class="sig-name descname">create_or_join</code><a class="headerlink" href="#classes.ScheduledGames.create_or_join" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.current_players">
+<code class="sig-name descname">current_players</code><a class="headerlink" href="#classes.ScheduledGames.current_players" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.game_date">
+<code class="sig-name descname">game_date</code><a class="headerlink" href="#classes.ScheduledGames.game_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.game_id">
+<code class="sig-name descname">game_id</code><a class="headerlink" href="#classes.ScheduledGames.game_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.game_time">
+<code class="sig-name descname">game_time</code><a class="headerlink" href="#classes.ScheduledGames.game_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#classes.ScheduledGames.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.latitude">
+<code class="sig-name descname">latitude</code><a class="headerlink" href="#classes.ScheduledGames.latitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.longitude">
+<code class="sig-name descname">longitude</code><a class="headerlink" href="#classes.ScheduledGames.longitude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.max_players">
+<code class="sig-name descname">max_players</code><a class="headerlink" href="#classes.ScheduledGames.max_players" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.players">
+<code class="sig-name descname">players</code><a class="headerlink" href="#classes.ScheduledGames.players" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.skill_level">
+<code class="sig-name descname">skill_level</code><a class="headerlink" href="#classes.ScheduledGames.skill_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.ScheduledGames.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#classes.ScheduledGames.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.UpdateProfileForm">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">UpdateProfileForm</code><span class="sig-paren">(</span><em class="sig-param">formdata=&lt;object object&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#UpdateProfileForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.UpdateProfileForm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="classes.UpdateProfileForm.address">
+<code class="sig-name descname">address</code><em class="property"> = &lt;UnboundField(StringField, (), {'label': 'Address:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.age">
+<code class="sig-name descname">age</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Age:', 'choices': [(None, ' '), ('18', '18'), ('19', '19'), ('20', '20'), ('21', '21'), ('22', '22'), ('23', '23'), ('24', '24'), ('25', '25'), ('26', '26'), ('27', '27'), ('28', '28'), ('29', '29'), ('30', '30'), ('31', '31'), ('32', '32'), ('33', '33'), ('34', '34'), ('35', '35'), ('36', '36'), ('37', '37'), ('38', '38'), ('39', '39'), ('40', '40'), ('41', '41'), ('42', '42'), ('43', '43'), ('44', '44'), ('45', '45'), ('46', '46'), ('47', '47'), ('48', '48'), ('49', '49'), ('50', '50'), ('51', '51'), ('52', '52'), ('53', '53'), ('54', '54'), ('55', '55'), ('56', '56'), ('57', '57'), ('58', '58'), ('59', '59'), ('60', '60'), ('61', '61'), ('62', '62'), ('63', '63'), ('64', '64'), ('65', '65'), ('66', '66'), ('67', '67'), ('68', '68'), ('69', '69'), ('70', '70'), ('71', '71'), ('72', '72'), ('73', '73'), ('74', '74'), ('75', '75'), ('76', '76'), ('77', '77'), ('78', '78'), ('79', '79'), ('80', '80'), ('81', '81'), ('82', '82'), ('83', '83'), ('84', '84'), ('85', '85'), ('86', '86'), ('87', '87'), ('88', '88'), ('89', '89'), ('90', '90'), ('91', '91'), ('92', '92'), ('93', '93'), ('94', '94'), ('95', '95'), ('96', '96'), ('97', '97'), ('98', '98'), ('99', '99'), ('100', '100'), ('101', '101'), ('102', '102'), ('103', '103'), ('104', '104'), ('105', '105'), ('106', '106'), ('107', '107'), ('108', '108'), ('109', '109'), ('110', '110'), ('111', '111'), ('112', '112'), ('113', '113'), ('114', '114'), ('115', '115'), ('116', '116'), ('117', '117'), ('118', '118'), ('119', '119')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.age" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.city">
+<code class="sig-name descname">city</code><em class="property"> = &lt;UnboundField(StringField, (), {'label': 'City:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.court_type">
+<code class="sig-name descname">court_type</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Preferred Type of Basketball Court:', 'choices': [(None, ' '), ('indoor', 'indoor'), ('outdoor', 'outdoor'), ('no preference', 'no preference')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.court_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.court_type_choices">
+<code class="sig-name descname">court_type_choices</code><em class="property"> = ['indoor', 'outdoor', 'no preference']</em><a class="headerlink" href="#classes.UpdateProfileForm.court_type_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.feet">
+<code class="sig-name descname">feet</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'feet', 'choices': [(None, ' '), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.feet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.gender">
+<code class="sig-name descname">gender</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Gender:', 'choices': [(None, ''), ('female', 'female'), ('male', 'male'), ('non-binary', 'non-binary')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.gender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.gender_choices">
+<code class="sig-name descname">gender_choices</code><em class="property"> = ['female', 'male', 'non-binary']</em><a class="headerlink" href="#classes.UpdateProfileForm.gender_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.inches">
+<code class="sig-name descname">inches</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'inches', 'choices': [(None, ' '), ('0', '0'), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10'), ('11', '11')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.inches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.skill">
+<code class="sig-name descname">skill</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'Basketball Skill Level:', 'choices': [(None, ''), ('beginner', 'beginner'), ('intermediate', 'intermediate'), ('experienced', 'experienced'), ('advanced', 'advanced')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.skill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.skill_choices">
+<code class="sig-name descname">skill_choices</code><em class="property"> = ['beginner', 'intermediate', 'experienced', 'advanced']</em><a class="headerlink" href="#classes.UpdateProfileForm.skill_choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.state">
+<code class="sig-name descname">state</code><em class="property"> = &lt;UnboundField(SelectField, (), {'label': 'State', 'choices': [(None, ' '), ('AL', 'AL'), ('AK', 'AK'), ('AZ', 'AZ'), ('AR', 'AR'), ('CA', 'CA'), ('CO', 'CO'), ('CT', 'CT'), ('DE', 'DE'), ('FL', 'FL'), ('GA', 'GA'), ('HI', 'HI'), ('ID', 'ID'), ('IL', 'IL'), ('IN', 'IN'), ('IA', 'IA'), ('KS', 'KS'), ('KY', 'KY'), ('LA', 'LA'), ('ME', 'ME'), ('MD', 'MD'), ('MA', 'MA'), ('MI', 'MI'), ('MN', 'MN'), ('MS', 'MS'), ('MO', 'MO'), ('MT', 'MT'), ('NE', 'NE'), ('NV', 'NV'), ('NH', 'NH'), ('NJ', 'NJ'), ('NM', 'NM'), ('NY', 'NY'), ('NC', 'NC'), ('ND', 'ND'), ('OH', 'OH'), ('OK', 'OK'), ('OR', 'OR'), ('PA', 'PA'), ('RI', 'RI'), ('SC', 'SC'), ('SD', 'SD'), ('TN', 'TN'), ('TX', 'TX'), ('UT', 'UT'), ('VT', 'VT'), ('VA', 'VA'), ('WA', 'WA'), ('WV', 'WV'), ('WI', 'WI'), ('WY', 'WY')], 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.states">
+<code class="sig-name descname">states</code><em class="property"> = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']</em><a class="headerlink" href="#classes.UpdateProfileForm.states" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.submit">
+<code class="sig-name descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Update',), {})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.UpdateProfileForm.zipcode">
+<code class="sig-name descname">zipcode</code><em class="property"> = &lt;UnboundField(IntegerField, (), {'label': 'Zip Code:', 'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#classes.UpdateProfileForm.zipcode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="classes.User">
+<em class="property">class </em><code class="sig-prename descclassname">classes.</code><code class="sig-name descname">User</code><span class="sig-paren">(</span><em class="sig-param">username</em>, <em class="sig-param">email</em>, <em class="sig-param">password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#User"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.User" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="classes.User.check_password">
+<code class="sig-name descname">check_password</code><span class="sig-paren">(</span><em class="sig-param">password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#User.check_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.User.check_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.User.email">
+<code class="sig-name descname">email</code><a class="headerlink" href="#classes.User.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.User.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#classes.User.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.User.password_hash">
+<code class="sig-name descname">password_hash</code><a class="headerlink" href="#classes.User.password_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="classes.User.set_password">
+<code class="sig-name descname">set_password</code><span class="sig-paren">(</span><em class="sig-param">password</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#User.set_password"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.User.set_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="classes.User.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#classes.User.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="classes.load_user">
+<code class="sig-prename descclassname">classes.</code><code class="sig-name descname">load_user</code><span class="sig-paren">(</span><em class="sig-param">id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#load_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#classes.load_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-routes"></span><dl class="function">
+<dt id="routes.about">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#about"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.about" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.court_locator">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">court_locator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#court_locator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.court_locator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.find_game">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">find_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#find_game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.find_game" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.index">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.join">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">join</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#join"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.join" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.left">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.login">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.login" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.logout">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#logout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.logout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.main">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.my_games">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">my_games</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#my_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.my_games" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.my_profile">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">my_profile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#my_profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.my_profile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.not_found">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">not_found</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#not_found"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.not_found" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.register">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.register" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.schedule_game">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">schedule_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#schedule_game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.schedule_game" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.scheduled_games">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">scheduled_games</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#scheduled_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.scheduled_games" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="routes.utility_processor">
+<code class="sig-prename descclassname">routes.</code><code class="sig-name descname">utility_processor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/routes.html#utility_processor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#routes.utility_processor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-user_def"></span><span class="target" id="module-test_classes"></span></div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WeBall</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WeBall Code Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Environment Requirements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Requirements.html" title="previous chapter">Environment Requirements</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Haree Srinivasan, Max Calehuff, Meng Lin, Jesse Moore, Srikar Murali, Xiao Rao, Qingyi Sun, Xintao(Todd) Zhang, Kyrill Rekun.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Code.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

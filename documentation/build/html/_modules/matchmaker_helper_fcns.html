@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>matchmaker_helper_fcns &#8212; WeBall 0 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for matchmaker_helper_fcns</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">app</span> <span class="k">import</span> <span class="n">application</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">db</span>
+<span class="kn">from</span> <span class="nn">app.classes</span> <span class="k">import</span> <span class="n">CourtAvailabilityHours</span><span class="p">,</span> <span class="n">CourtInformation</span><span class="p">,</span> <span class="n">CourtTimings</span><span class="p">,</span>\
+    <span class="n">MatchMaker</span><span class="p">,</span> <span class="n">Preference</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">import</span> <span class="nn">simplejson</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">from</span> <span class="nn">app.user_def</span> <span class="k">import</span> <span class="n">apikey</span>
+
+
+<span class="c1">#apikey = &quot;AIzaSyAWyukJ90WWklbqkYl9OEMVeYxm0gG39ck&quot;</span>
+
+
+<div class="viewcode-block" id="filter_courts"><a class="viewcode-back" href="../Code.html#matchmaker_helper_fcns.filter_courts">[docs]</a><span class="k">def</span> <span class="nf">filter_courts</span><span class="p">(</span><span class="n">week_day</span><span class="p">,</span> <span class="n">game_time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filters out busy and very busy courts at the given day and time</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">courts</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">CourtAvailabilityHours</span><span class="o">.</span><span class="n">court_name</span><span class="p">)</span>\
+               <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CourtAvailabilityHours</span><span class="o">.</span><span class="n">day_of_week</span> <span class="o">==</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{week_day}</span><span class="s2">s&quot;</span><span class="p">,</span>
+                       <span class="n">CourtAvailabilityHours</span><span class="o">.</span><span class="n">time_12hr</span> <span class="o">==</span> <span class="n">game_time</span><span class="p">,</span>
+                       <span class="n">CourtAvailabilityHours</span><span class="o">.</span><span class="n">availability_value</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="n">courts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courts</span><span class="p">]</span>
+    <span class="n">courts</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">CourtInformation</span><span class="o">.</span><span class="n">court_name</span><span class="p">)</span>\
+                       <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CourtInformation</span><span class="o">.</span><span class="n">court_name</span><span class="o">.</span><span class="n">in_</span><span class="p">(</span><span class="n">courts</span><span class="p">),</span>
+                               <span class="n">CourtInformation</span><span class="o">.</span><span class="n">private_public</span> <span class="o">==</span> <span class="s2">&quot;public&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">courts</span></div>
+
+
+<div class="viewcode-block" id="lat_lng_converter"><a class="viewcode-back" href="../Code.html#matchmaker_helper_fcns.lat_lng_converter">[docs]</a><span class="k">def</span> <span class="nf">lat_lng_converter</span><span class="p">(</span><span class="n">location_tuple</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Takes a tuple (lat, long) and converts it to a string &quot;lat, long&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{location_tuple[0]}</span><span class="s2">,</span><span class="si">{location_tuple[1]}</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="create_full_address"><a class="viewcode-back" href="../Code.html#matchmaker_helper_fcns.create_full_address">[docs]</a><span class="k">def</span> <span class="nf">create_full_address</span><span class="p">(</span><span class="n">address</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds San Francisco, CA to an address and adds plus signs where there</span>
+<span class="sd">    were spaces to be used in google maps</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">address_parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">address</span><span class="p">,</span> <span class="s2">&quot;San Francisco&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">]</span>
+    <span class="n">full_address</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">address_parts</span><span class="p">)</span>
+    <span class="n">full_address</span> <span class="o">=</span> <span class="n">full_address</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">full_address</span></div>
+
+
+<div class="viewcode-block" id="find_coordinates"><a class="viewcode-back" href="../Code.html#matchmaker_helper_fcns.find_coordinates">[docs]</a><span class="k">def</span> <span class="nf">find_coordinates</span><span class="p">(</span><span class="n">address</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds the coordinates of a given address using the Google API</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">full_address</span> <span class="o">=</span> <span class="n">create_full_address</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="s2">&quot;https://maps.googleapis.com/maps/api/geocode/json?address=&quot;</span> \
+           <span class="n">f</span><span class="s2">&quot;</span><span class="si">{full_address}</span><span class="s2">&amp;key=</span><span class="si">{apikey}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="n">simplejson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+    <span class="n">location_dict</span> <span class="o">=</span> <span class="n">request</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;geometry&#39;</span><span class="p">][</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+    <span class="n">ret_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="n">location_dict</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">location_dict</span><span class="p">[</span><span class="s2">&quot;lng&quot;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">lat_lng_converter</span><span class="p">(</span><span class="n">ret_tuple</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="find_match_court"><a class="viewcode-back" href="../Code.html#matchmaker_helper_fcns.find_match_court">[docs]</a><span class="k">def</span> <span class="nf">find_match_court</span><span class="p">(</span><span class="n">game_date</span><span class="p">,</span> <span class="n">game_time</span><span class="p">,</span> <span class="n">skill_level</span><span class="p">):</span>
+    <span class="n">week_day_num</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">game_date</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span>
+    <span class="n">week_day</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">.</span><span class="n">day_name</span><span class="p">[</span><span class="n">week_day_num</span><span class="p">]</span>
+    <span class="n">courts</span> <span class="o">=</span> <span class="n">filter_courts</span><span class="p">(</span><span class="n">week_day</span><span class="p">,</span> <span class="n">game_time</span><span class="p">)</span>
+
+    <span class="n">user_locations</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MatchMaker</span><span class="o">.</span><span class="n">location</span><span class="p">)</span> \
+                      <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MatchMaker</span><span class="o">.</span><span class="n">game_date</span> <span class="o">==</span> <span class="n">game_date</span><span class="p">,</span>
+                              <span class="n">MatchMaker</span><span class="o">.</span><span class="n">game_time</span> <span class="o">==</span> <span class="n">game_time</span><span class="p">,</span>
+                              <span class="n">MatchMaker</span><span class="o">.</span><span class="n">skill_level</span> <span class="o">==</span>
+                              <span class="n">skill_level</span><span class="p">)</span>
+
+    <span class="n">court_names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courts</span><span class="p">:</span>
+        <span class="n">court_name</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">court_location</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">CourtInformation</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                          <span class="n">CourtInformation</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span> \
+                           <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">CourtInformation</span><span class="o">.</span><span class="n">court_name</span> <span class="o">==</span>
+                                   <span class="n">court_name</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">court_location</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">lat</span> <span class="o">=</span> <span class="n">court_location</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">lng</span> <span class="o">=</span> <span class="n">court_location</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">court_coord</span> <span class="o">=</span> <span class="n">lat_lng_converter</span><span class="p">((</span><span class="n">lat</span><span class="p">,</span> <span class="n">lng</span><span class="p">))</span>
+            <span class="n">court_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">court_name</span><span class="p">)</span>
+            <span class="n">coords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">court_coord</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">dist_to_court</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">user_locations</span><span class="p">:</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">user_coord</span> <span class="o">=</span> <span class="n">find_coordinates</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+
+            <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://maps.googleapis.com/maps/api/distancematrix/json?key=&quot;</span> \
+                  <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&amp;origins=</span><span class="si">{1}</span><span class="s2">&amp;destinations=</span><span class="si">{2}</span><span class="s2">&amp;mode=</span><span class="si">{3}</span><span class="s2">&amp;departure_time=&quot;</span> \
+                  <span class="s2">&quot;now&amp;language=en-EN&amp;sensor=false&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                  <span class="nb">str</span><span class="p">(</span><span class="n">apikey</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_coord</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">court_coord</span><span class="p">),</span> <span class="s2">&quot;walking&quot;</span><span class="p">)</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">simplejson</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;rows&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;elements&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;distance&#39;</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;km&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">*</span> <span class="mf">0.62</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">dist_to_court</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+
+
+        <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">dist_to_court</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">distances</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">court_names</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">))</span>
+
+    <span class="n">court_distances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;courts&quot;</span><span class="p">:</span> <span class="n">court_names</span><span class="p">,</span> <span class="s2">&quot;distances&quot;</span><span class="p">:</span> <span class="n">distances</span><span class="p">,</span>
+                                    <span class="s2">&quot;coords&quot;</span><span class="p">:</span> <span class="n">coords</span><span class="p">})</span>
+    <span class="n">court_distances</span> <span class="o">=</span> <span class="n">court_distances</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;distances&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">court</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">court_distances</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;courts&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">lat_lng</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">court_distances</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;coords&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">link</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;http://maps.google.com/maps?q=</span><span class="si">{lat_lng}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">court</span><span class="p">,</span> <span class="n">link</span></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">WeBall</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introductions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WeBall Code Tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Requirements.html">Environment Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code.html">Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Haree Srinivasan, Max Calehuff, Meng Lin, Jesse Moore, Srikar Murali, Xiao Rao, Qingyi Sun, Xintao(Todd) Zhang, Kyrill Rekun.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Find Game
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+{% endblock styles %}
+
+{% block content %}
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    {% if form_submitted == False %}
+    <div class="wrapper" style="background-image: url('static/find_game.png');">
+        <div class="inner">
+            <div class="image-holder">
+                <img src="static/sf.jpg" alt="">
+            </div>
+            <form method="POST">
+                    <h3>Find Game</h3>
+                    {{ form.hidden_tag() }}
+                    {{ form.location.label }} {{ form.location }}<br> <br/>
+                    {{ form.city.label }} {{ form.city }}<br> <br/>
+                    {{ form.game_date.label }} {{ form.game_date }} <br> <br/>
+                    <center> {{ wtf.form_field(form.submit)}} </center>
+            </form>
+        </div>
+    </div>
+    {% elif form_submitted == True %}
+    <div class = container container-fluid>
+        {% if games_found == True %}
+        <h2>Games Found on {{game_date}}</h2>
+         <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th align="left">Game Date</th>
+                        <th align="left">Game Time</th>
+                        <th align="left">Skill Level</th>
+                        <th align="left">Max Number of Players</th>
+                        <th align="left">Number of Players</th>
+                        <th align="left">Created By</th>
+                        <th align="left">Court Name</th>
+                        <th align="left">Join Now!</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in match_objects %}
+                        <tr>
+                            <td> {{m.game_date}} </td>
+                            <td> {{m.game_time}} </td>
+                            <td> {{m.skill_level}} </td>
+                            <td> {{m.max_players}} </td>
+                            <td> {{m.current_players}} </td>
+                            <td> {{m.username}} </td>
+                            <td> <a href={{m.link}}> {{m.court_name}} </a> </td>
+                            {% if user_now not in m.players %}
+                            <td>
+                                <form method="POST" action='/join' onsubmit="gtag('event','submit',{'event_category':'submit', 'event_label':'joined_game', 'value':40})">
+                                <input name='game_date' type = "hidden" value = "{{m.game_date}}">
+                                <input name='game_time' type = "hidden" value = "{{m.game_time}}">
+                                <input name='max_players' type = "hidden" value = "{{m.max_players}}">
+                                <input name='skill_level' type = "hidden" value = "{{m.skill_level}}">
+                                <input name='username' type = "hidden" value = "{{m.username}}">
+                                <input name='game_id' type = "hidden" value = "{{m.game_id}}">
+                                <input name='current_players' type = "hidden" value = "{{m.current_players}}">
+                                <input name ='players' type = "hidden" value ="{{m.players}}">
+                                <input name='court_name' type = "hidden" value = "{{m.court_name}}">
+                                <center><input type = 'submit' value = "Join"> </center>
+                                </form>
+                            </td>
+                            {% else %}
+                            <td>
+                                <form method="POST" action='/left'>
+                                <input name='game_date' type = "hidden" value = "{{m.game_date}}">
+                                <input name='game_time' type = "hidden" value = "{{m.game_time}}">
+                                <input name='max_players' type = "hidden" value = "{{m.max_players}}">
+                                <input name='skill_level' type = "hidden" value = "{{m.skill_level}}">
+                                <input name='username' type = "hidden" value = "{{m.username}}">
+                                <input name='game_id' type = "hidden" value = "{{m.game_id}}">
+                                <input name='current_players' type = "hidden" value = "{{m.current_players}}">
+                                <input name ='players' type = "hidden" value ="{{m.players}}">
+                                <input name='court_name' type = "hidden" value = "{{court_name}}">
+                                <center><input type = 'submit' value = "leave"> </center>
+                                </form>
+                            </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                {% elif games_found == False %}
+                    <h2>No games available on {{game_date}}</h2>
+                </tbody>
+                {% endif %}
+                
+         </table>
+    </div>
+
+    {% endif %}
+
+
+{% endblock content %}

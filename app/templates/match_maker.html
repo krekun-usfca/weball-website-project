@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Match Maker
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+{% endblock styles %}
+
+{% block content %}
+    <div class="wrapper" style="background-image: url('static/find_game.png');">
+        <div class="inner">
+            <div class="image-holder">
+                <img src="static/nba.jpg" alt="">
+            </div>
+            <form method="POST">
+                    <h3>Find Game</h3>
+                    {{ form.hidden_tag() }}
+                    {{ form.location.label }} {{ form.location }}<br> <br/>
+                    <!-- {{ wtf.form_field(form.location, placeholder="Address") }} -->
+                    {{ form.game_date.label }} {{ form.game_date }} <br><br/>
+                    {{ form.game_time.label }} {{ form.game_time }}  <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i> <br><br/>
+                    {{ form.skill_level.label }} {{ form.skill_level }} <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i> <br><br/>
+                    <center> {{ wtf.form_field(form.submit)}} </center>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

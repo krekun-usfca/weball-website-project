@@ -1,0 +1,75 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+
+{%- block html %}
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='ball_favicon.ico') }}">
+	<head>
+
+    {%- block metas %}
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {%- endblock metas %}
+
+    {%- block head %}
+    	{% include "google_analytics.html" %}
+	    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+    {%- endblock head %}
+
+	</head>
+	<body{% block body_attribs %}{% endblock body_attribs %}>
+
+    {% block body -%}
+
+    	{% block navbar %}
+			{% include "navbar.html" %}
+		{%- endblock navbar %}
+
+		{% block alerts -%}
+		    {% with messages = get_flashed_messages() %}
+				{% if messages %}
+			    	{% for message in messages %}
+				        <div class="alert alert-danger alert-dismissible">
+				            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+				            {{ message }}
+				        </div> 
+				    {% endfor %} 
+			    {% endif %}
+			{% endwith %}
+		{%- endblock alerts %}
+
+	    {% block content -%}
+	    {%- endblock content %}
+
+		{% block scripts %}
+			<script src="static/vendor/jquery/jquery.min.js"></script>
+			<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+			<script>
+			    $(".modal").on('shown.bs.modal', function () {
+			    	$(this).find("input:visible:first").focus();
+			    });
+			</script>
+		{%- endblock scripts %}
+		{%- block styles %}
+	    	<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+	    	<link href="{{ url_for('static', filename='css/modern-business.css') }}" rel="stylesheet">
+	    	<script src="https://kit.fontawesome.com/3fe4f07439.js" crossorigin="anonymous"></script>
+	    {%- endblock styles %}
+
+	{%- endblock body %}
+
+	</body>
+
+	{%- block footer %}
+    <footer class="py-4 bg-dark">
+	  <div class="container">
+	    <p class="m-0 text-center text-white">Copyright &copy; WeBall 2020</p>
+	  </div>
+	</footer>
+	{% endblock footer -%}
+
+</html>
+{%- endblock html %}
+{% endblock doc -%}

@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Game Schedule
+{% endblock %}
+
+{% block content %}
+        <div class = container container-fluid>
+            <h3> Games for {{court_name}}</h3>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th align="left">Game Date</th>
+                        <th align="left">Game Time</th>
+                        <th align="left">Max Number of Player</th>
+                        <th align="left">Skill Level</th>
+                        <th align="left">Created By</th>
+                        <th align="left">Number of Players</th>
+                        <th align="left">Join Now!</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for c in game_info %}
+                <tr>
+                    <td> {{c.game_date}}</td>
+                    <td> {{c.game_time}} </td>
+                    <td> {{c.max_players}} </td>
+                    <td> {{c.skill_level}} </td>
+                    <td> {{c.username}} </td>
+                    <td> {{c.current_players}} </td>
+                    {% if user_now not in c.players %}
+                    <td>
+                        <form method="POST" action='/join' onsubmit="gtag('event','submit',{'event_category':'submit', 'event_label':'joined_game', 'value':40})">
+                        <input name='game_date' type = "hidden" value = "{{c.game_date}}">
+                        <input name='game_time' type = "hidden" value = "{{c.game_time}}">
+                        <input name='max_players' type = "hidden" value = "{{c.max_players}}">
+                        <input name='skill_level' type = "hidden" value = "{{c.skill_level}}">
+                        <input name='username' type = "hidden" value = "{{c.username}}">
+                        <input name='game_id' type = "hidden" value = "{{c.game_id}}">
+                        <input name='current_players' type = "hidden" value = "{{c.current_players}}">
+                        <input name ='players' type = "hidden" value ="{{c.players}}">
+                        <input name='court_name' type = "hidden" value = "{{court_name}}">
+                        <center><input type = 'submit' value = "Join"> </center>
+                        </form>
+                    </td>
+                    {% else %}
+                    <td>
+                        <form method="POST" action='/left'>
+                        <input name='game_date' type = "hidden" value = "{{c.game_date}}">
+                        <input name='game_time' type = "hidden" value = "{{c.game_time}}">
+                        <input name='max_players' type = "hidden" value = "{{c.max_players}}">
+                        <input name='skill_level' type = "hidden" value = "{{c.skill_level}}">
+                        <input name='username' type = "hidden" value = "{{c.username}}">
+                        <input name='game_id' type = "hidden" value = "{{c.game_id}}">
+                        <input name='current_players' type = "hidden" value = "{{c.current_players}}">
+                        <input name ='players' type = "hidden" value ="{{c.players}}">
+                        <input name='court_name' type = "hidden" value = "{{court_name}}">
+                        <center><input type = 'submit' value = "leave"> </center>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="container">
+            <button type="button" class="btn btn-info btn-primary" href="" data-toggle="modal" data-target="#scheduleModal">Create New Game!</button>
+        </div>
+
+        <div id="scheduleModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form method="POST" action='/schedule_game' name="create_games_form" onsubmit="gtag('event','submit',{'event_category':'submit', 'event_label':'added_game', 'value':20})">
+                            <h3>Create New Game</h3>
+                            {{ create_games_form.hidden_tag() }}
+                            {{ wtf.form_field(create_games_form.game_date, placeholder="Game Date") }}
+                                {% for error in create_games_form.game_date.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            {{ wtf.form_field(create_games_form.game_time, placeholder="Game_time") }}
+                                {% for error in create_games_form.game_time.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            {{ wtf.form_field(create_games_form.skill_level, placeholder="Skill Level") }}
+                                {% for error in create_games_form.skill_level.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            {{ wtf.form_field(create_games_form.max_players, placeholder="Number of Players") }}
+                                {% for error in create_games_form.max_players.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                            <input name='court_name' type = "hidden" value = "{{court_name}}">
+                            <center> {{ wtf.form_field(create_games_form.submit)}} </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
